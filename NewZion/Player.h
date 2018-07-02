@@ -1,3 +1,4 @@
+#include<string>
 
 #ifndef __PLAYER_H_
 #define __PLAYER_H_
@@ -5,7 +6,7 @@
 
 
 
-#include<string>
+
 
 class Arena;
 

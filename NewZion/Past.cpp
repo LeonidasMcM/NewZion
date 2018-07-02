@@ -8,11 +8,6 @@
 using std::cout;
 using std::endl;
 
-Past::Past()
-{
-	nRows = 0;
-	nCols = 0;
-}
 
 Past::Past(int Rows, int Cols)
 {

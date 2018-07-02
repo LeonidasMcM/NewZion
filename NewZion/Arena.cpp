@@ -7,26 +7,25 @@ using std::cout;
 using std::endl;
 
 
-Arena::Arena(int nRows, int nCols)
-{
-	if (nRows <= 0 || nCols <= 0 || nRows > MAXROWS || nCols > MAXCOLS)
-	{
-		cout << "***** Arena created with invalid size " << nRows << " by "
-			<< nCols << "!" << endl;
-		exit(1);
-	}
-	m_rows = nRows;
-	m_cols = nCols;
-	m_player = nullptr;
-	m_nRobots = 0;
-	const int i=nRows, j=nCols;
-	
-
-
-	Past arenapast(i,j);
-	m_Past = arenapast;
-	
-}
+//Arena::Arena(int nRows, int nCols)
+//{
+//	if (nRows <= 0 || nCols <= 0 || nRows > MAXROWS || nCols > MAXCOLS)
+//	{
+//		cout << "***** Arena created with invalid size " << nRows << " by "
+//			<< nCols << "!" << endl;
+//		exit(1);
+//	}
+//	m_rows = nRows;
+//	m_cols = nCols;
+//	m_player = nullptr;
+//	m_nRobots = 0;
+//	const int i=nRows, j=nCols;
+//	
+//
+//
+//	
+//	
+//}
 
 Arena::~Arena()
 {

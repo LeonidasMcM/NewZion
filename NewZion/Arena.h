@@ -1,22 +1,41 @@
-#ifndef __ARENA_H_
-#define __ARENA_H_
 
 class Player;
 
 class Robot;
 
-class Past;
+
 
 #include<string>
 #include"globals.h"
-#include"Past.h"
+#include"Past.h"\
 
+
+#ifndef __ARENA_H_
+#define __ARENA_H_
+
+#include<iostream>
+using namespace std;
 
 class Arena
 {
 public:
 	// Constructor/destructor
-	Arena(int nRows, int nCols);
+	Arena(int nRows, int nCols) :m_Past(nRows, nCols) {
+		if (nRows <= 0 || nCols <= 0 || nRows > MAXROWS || nCols > MAXCOLS)
+		{
+			cout << "***** Arena created with invalid size " << nRows << " by "
+				<< nCols << "!" << endl;
+			exit(1);
+		}
+		m_rows = nRows;
+		m_cols = nCols;
+		m_player = nullptr;
+		m_nRobots = 0;
+		const int i = nRows, j = nCols;
+
+
+
+	};
 	~Arena();
 
 	// Accessors
