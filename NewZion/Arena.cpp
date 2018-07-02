@@ -1,6 +1,7 @@
 #include "Arena.h"
 #include"Player.h"
 #include"Robot.h"
+#include"Past.h"
 #include<iostream>
 using std::cout;
 using std::endl;
@@ -18,6 +19,13 @@ Arena::Arena(int nRows, int nCols)
 	m_cols = nCols;
 	m_player = nullptr;
 	m_nRobots = 0;
+	const int i=nRows, j=nCols;
+	
+
+
+	Past arenapast(i,j);
+	m_Past = arenapast;
+	
 }
 
 Arena::~Arena()
@@ -121,6 +129,12 @@ void Arena::display(std::string msg) const
 		if (m_player->isDead())
 			cout << "The player is dead." << endl;
 	}
+}
+
+Past & Arena::thePast()
+{
+
+	return m_Past;
 }
 
 bool Arena::addRobot(int r, int c)

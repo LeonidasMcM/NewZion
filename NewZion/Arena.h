@@ -5,9 +5,11 @@ class Player;
 
 class Robot;
 
+class Past;
 
 #include<string>
 #include"globals.h"
+#include"Past.h"
 
 
 class Arena
@@ -24,6 +26,7 @@ public:
 	int     robotCount() const;
 	int     nRobotsAt(int r, int c) const;
 	void    display(std::string msg) const;
+	Past& thePast();
 
 	// Mutators
 	bool   addRobot(int r, int c);
@@ -37,6 +40,7 @@ private:
 	Player* m_player;
 	Robot*  m_robots[MAXROBOTS];
 	int     m_nRobots;
+	Past   m_Past;
 };
 
 #endif // !

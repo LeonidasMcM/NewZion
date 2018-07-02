@@ -2,6 +2,7 @@
 #include"Player.h"
 #include"Arena.h"
 #include"globals.h"
+#include "Past.h"
 #include <iostream>
 using std::cout;
 using std::getline;
@@ -57,11 +58,13 @@ void Game::play()
 		m_arena->display(msg);
 		msg = "";
 		cout << endl;
-		cout << "Move (u/d/l/r/su/sd/sl/sr/c/q): ";
+		cout << "Move (u/d/l/r/su/sd/sl/sr/c/q/p): ";
 		std::string action;
 		getline(cin, action);
-		if (action.size() == 0)
+		if (action.size() == 0) {
 			p->stand();
+			m_arena->thePast().markIt(m_arena->player()->row(), m_arena->player()->col() );
+		}
 		else
 		{
 			switch (action[0])
@@ -69,18 +72,24 @@ void Game::play()
 			default:   // if bad move, nobody moves
 				cout << '\a' << endl;  // beep
 				continue;
+			case 'p':
+				m_arena->thePast().printThePast();
+				continue;
 			case 'q':
 				return;
 			case 'c':  // computer moves player
 				msg = p->takeComputerChosenTurn();
+				m_arena->thePast().markIt(m_arena->player()->row(), m_arena->player()->col());
 				break;
 			case 'u':
 			case 'd':
 			case 'l':
 			case 'r':
 				p->move(decodeDirection(action[0]));
+				m_arena->thePast().markIt(m_arena->player()->row(), m_arena->player()->col());
 				break;
 			case 's':
+				m_arena->thePast().markIt(m_arena->player()->row(), m_arena->player()->col());
 				if (action.size() < 2)  // if no direction, nobody moves
 				{
 					cout << '\a' << endl;  // beep
