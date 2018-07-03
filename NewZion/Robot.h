@@ -1,8 +1,6 @@
+#include "Arena.h"
 #ifndef __ROBOT_H_
 #define __ROBOT_H_
-
-class Arena;
-
 
 class Robot
 {

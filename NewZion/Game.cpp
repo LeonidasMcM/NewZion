@@ -63,7 +63,7 @@ void Game::play()
 		getline(cin, action);
 		if (action.size() == 0) {
 			p->stand();
-			m_arena->thePast().markIt(m_arena->player()->row(), m_arena->player()->col() );
+			//m_arena->thePast().markIt(m_arena->player()->row(), m_arena->player()->col());
 		}
 		else
 		{
@@ -79,17 +79,17 @@ void Game::play()
 				return;
 			case 'c':  // computer moves player
 				msg = p->takeComputerChosenTurn();
-				m_arena->thePast().markIt(m_arena->player()->row(), m_arena->player()->col());
+				//m_arena->thePast().markIt(m_arena->player()->row(), m_arena->player()->col());
 				break;
 			case 'u':
 			case 'd':
 			case 'l':
 			case 'r':
 				p->move(decodeDirection(action[0]));
-				m_arena->thePast().markIt(m_arena->player()->row(), m_arena->player()->col());
+				//m_arena->thePast().markIt(m_arena->player()->row(), m_arena->player()->col());
 				break;
 			case 's':
-				m_arena->thePast().markIt(m_arena->player()->row(), m_arena->player()->col());
+				//m_arena->thePast().markIt(m_arena->player()->row(), m_arena->player()->col());
 				if (action.size() < 2)  // if no direction, nobody moves
 				{
 					cout << '\a' << endl;  // beep

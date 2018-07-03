@@ -3,10 +3,6 @@
 #define __PAST_H_
 
 
-
-
-
-
 class Past
 {
 public:

@@ -144,6 +144,7 @@ std::string Player::takeComputerChosenTurn()
 
 void Player::stand()
 {
+	m_arena->thePast().markIt(m_arena->player()->row(), m_arena->player()->col());
 	m_age++;
 }
 
@@ -152,16 +153,29 @@ void Player::move(int dir)
 	m_age++;
 	switch (dir)
 	{
-	case UP:     if (m_row > 1)               m_row--; break;
-	case DOWN:   if (m_row < m_arena->rows()) m_row++; break;
-	case LEFT:   if (m_col > 1)               m_col--; break;
-	case RIGHT:  if (m_col < m_arena->cols()) m_col++; break;
+	case UP:     if (m_row > 1)                
+		m_row--; 
+		m_arena->thePast().markIt(m_arena->player()->row(), m_arena->player()->col());
+		break;
+	case DOWN:   if (m_row < m_arena->rows()) 
+		m_row++; 
+		m_arena->thePast().markIt(m_arena->player()->row(), m_arena->player()->col());
+		break;
+	case LEFT:   if (m_col > 1)               
+		m_col--;
+		m_arena->thePast().markIt(m_arena->player()->row(), m_arena->player()->col());
+		break;
+	case RIGHT:  if (m_col < m_arena->cols()) 
+		m_col++;
+		m_arena->thePast().markIt(m_arena->player()->row(), m_arena->player()->col());
+		break;
 	}
 }
 
 bool Player::shoot(int dir)
 {
 	m_age++;
+	m_arena->thePast().markIt(m_arena->player()->row(), m_arena->player()->col());
 
 	if (rand() % 3 == 0)  // miss with 1/3 probability
 		return false;
